@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 
 export default function ProductDetail() {
     const [cap, setCap] = useState({})
+    const [loading, setLoading] = useState(true)
     const {id} = useParams();
 
     function getCap() {
-        fetch(`http://159.89.2.247:8003/api/caps/${id}/`)
-        .then(response => response.json())
-        .then(data => setCap(data))
+        axios.get(`http://159.89.2.247:8003/api/caps/${id}/`)
+        .then(response => {
+            // console.log(response.data)
+            setCap(response.data)
+            setLoading(false)
+        })
     }
 
     useEffect(getCap, [])
-
-    return (
-        <div>
-            <div>{cap.name}</div>
-            <div>{cap.price}</div>
-            <div>{cap.description}</div>
-        </div>
-    )
+    if (loading) {
+        return <div>ЗАГРУЗКА...</div>
+    } else {
+        return (
+            <div>
+                <div>{cap.name}</div>
+                <div>{cap.price}</div>
+                <div>{cap.description}</div>
+                <div><img src={cap.capsimage[0].photo}/></div>
+            </div>
+        )
+    }
 }
