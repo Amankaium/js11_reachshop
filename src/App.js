@@ -4,6 +4,7 @@ import Contacts from './components/Contacts/Contacts';
 import About from './components/About/About';
 import Products from './components/Products/Products';
 import ProductDetail from './components/Products/ProductDetail';
+import SignUp from './components/Users/SignUp';
 import "./App.css"
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
         <nav>
           <Link to="/">Домой</Link> &nbsp;|&nbsp;&nbsp;
           <Link to="/about">О нас</Link> &nbsp;|&nbsp;&nbsp;
-          <Link to="/contacts">Контакты</Link>
+          <Link to="/contacts">Контакты</Link> &nbsp;|&nbsp;&nbsp;
+          <Link to="/signup">Регистрация</Link>
         </nav>
         <span>phone: {phone}</span>
       </header>
@@ -25,6 +27,7 @@ function App() {
         <Route path="/contacts" element={<Contacts phoneNumber={phone}/>}/>
         <Route path="/" element={<Products/>}/>
         <Route path="/products/:id/" element={<ProductDetail/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
       </Routes>
     </Router>
   );
