@@ -5,6 +5,8 @@ import About from './components/About/About';
 import Products from './components/Products/Products';
 import ProductDetail from './components/Products/ProductDetail';
 import SignUp from './components/Users/SignUp';
+import SignIn from './components/Users/SignIn';
+import Orders from './components/Orders/Orders'
 import "./App.css"
 
 function App() {
@@ -17,7 +19,9 @@ function App() {
           <Link to="/">Домой</Link> &nbsp;|&nbsp;&nbsp;
           <Link to="/about">О нас</Link> &nbsp;|&nbsp;&nbsp;
           <Link to="/contacts">Контакты</Link> &nbsp;|&nbsp;&nbsp;
-          <Link to="/signup">Регистрация</Link>
+          <Link to="/orders">Заказы</Link> &nbsp;|&nbsp;&nbsp;
+          <Link to="/signup">Регистрация</Link> &nbsp;|&nbsp;&nbsp;
+          <Link to="/signin">Войти</Link>
         </nav>
         <span>phone: {phone}</span>
       </header>
@@ -28,6 +32,8 @@ function App() {
         <Route path="/" element={<Products/>}/>
         <Route path="/products/:id/" element={<ProductDetail/>}/>
         <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/signin" element={<SignIn/>}/>
+        <Route path="/orders" element={<Orders/>}/>
       </Routes>
     </Router>
   );
