@@ -2,7 +2,7 @@ import {useState} from 'react';
 import axios from 'axios';
 
 
-export default function SignIn() {
+export default function SignIn({setToken}) {
     const [user, setUser] = useState({})
     
     function inputHandler(event) {
@@ -18,7 +18,9 @@ export default function SignIn() {
             "http://159.89.2.247:8003/api/users/signin/",
             user
         ).then(response => {
-            console.log(response.data)
+            if (response.status === 200) {
+                setToken(response.data.access)
+            }
         }) 
     }
 

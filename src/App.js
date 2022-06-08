@@ -11,6 +11,7 @@ import "./App.css"
 
 function App() {
   const [phone, setPhone] = useState("2398745928476")
+  const [token, setToken] = useState("")
 
   return (
     <Router>
@@ -32,8 +33,8 @@ function App() {
         <Route path="/" element={<Products/>}/>
         <Route path="/products/:id/" element={<ProductDetail/>}/>
         <Route path="/signup" element={<SignUp/>}/>
-        <Route path="/signin" element={<SignIn/>}/>
-        <Route path="/orders" element={<Orders/>}/>
+        <Route path="/signin" element={<SignIn setToken={setToken}/>}/>
+        <Route path="/orders" element={<Orders token={token}/>}/>
       </Routes>
     </Router>
   );
