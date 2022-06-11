@@ -1,13 +1,54 @@
-body {
-  padding: 10px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 header {
   display: flex;
   justify-content: space-between;
+  padding: 0;
+  margin-bottom: 30px;
 }
 
+.content {
+  padding: 10px;
+}
 
+.dark {
+  background-color: black;
+  color: white;
+  height: 100vh;
+}
+
+.dark a {
+  color: white;
+}
+
+.light {
+  background-color: white;
+  color: black;
+  height: 100vh;
+}
+
+.light a {
+  color: black;
+}
+
+.change-theme {
+  border: 1px solid blue;
+  background-color: darkcyan;
+  border-radius: 5px;
+  color: white;
+  padding: 2px;
+  text-align: center;
+  line-height: 20px;
+}
+
+.change-theme:active {
+  color: black;
+  background-color: rgb(171, 171, 171);
+}
 
 
 /* .App {
