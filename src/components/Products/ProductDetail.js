@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
+import "./Product.css"
 
 
-export default function ProductDetail() {
+export default function ProductDetail({theme}) {
     const [cap, setCap] = useState({})
     const [loading, setLoading] = useState(true)
     const {id} = useParams();
@@ -17,6 +18,8 @@ export default function ProductDetail() {
         })
     }
 
+    const imageStyle = theme === "dark" ? 'image-with-border' : ''
+
     useEffect(getCap, [])
     if (loading) {
         return <div>ЗАГРУЗКА...</div>
@@ -26,7 +29,7 @@ export default function ProductDetail() {
                 <div>{cap.name}</div>
                 <div>{cap.price}</div>
                 <div>{cap.description}</div>
-                <div><img src={cap.capsimage[0].photo}/></div>
+                <div><img className={imageStyle} width="300px" src={ cap.capsimage.length > 0 ? cap.capsimage[0].photo : "" }/></div>
             </div>
         )
     }

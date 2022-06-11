@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react'
 import Product from './Product'
+import "./Products.css"
 
 
-export default function Products() {
+export default function Products({theme}) {
     const [caps, setCaps] = useState([])
     const [isError, setError] = useState(false)
 
@@ -21,11 +22,14 @@ export default function Products() {
     }
 
     useEffect(getCaps, [])
+
+    const currectStyle = theme === 'dark' ? "goods-list__dark" : "goods-list__light"
+
     if (isError) {
         return <div>Ошибка!</div>
     } else {
         return (
-            <div>
+            <div className={currectStyle}>
                 <h2>Список товаров</h2>
                 {caps.map(cap => <Product cap={cap} key={cap.id}/>)}
             </div>

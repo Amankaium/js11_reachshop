@@ -1,0 +1,9 @@
+.goods-list__dark {
+    background-color: #333;
+    color: #eee;
+    padding: 10px;
+}
+
+.goods-list__light {
+    padding: 10px;
+}
