@@ -17,7 +17,7 @@ function App({currentTheme, changeCurrentTheme}) {
   const [token, setToken] = useState("")
 
   function changeTheme() {
-    changeCurrentTheme(currentTheme)
+    changeCurrentTheme()
   }
 
   return (
@@ -56,7 +56,7 @@ function App({currentTheme, changeCurrentTheme}) {
 
 // mapStateToProps
 function readState(state) { 
-  return {currentTheme: state.value}
+  return {currentTheme: state.theme.currentTheme}
 }
 
 // mapDispatchToProps

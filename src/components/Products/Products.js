@@ -39,7 +39,7 @@ function Products({theme}) {
 }
 
 function mapStateToProps(state) {
-    return {theme: state.value}
+    return {theme: state.theme.currentTheme}
 }
 
 export default connect(mapStateToProps, null)(Products)

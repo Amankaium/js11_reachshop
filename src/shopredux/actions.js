@@ -1,5 +1,6 @@
+import {CHANGE_THEME} from './constants'
 
 
-export function changeCurrentTheme(currentTheme) {
-    return { type: currentTheme}
+export function changeCurrentTheme() {
+    return { type: CHANGE_THEME}
 }

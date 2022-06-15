@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-import "./Product.css"
+import "./Product.css";
+import { connect } from 'react-redux';
 
 
-export default function ProductDetail({theme}) {
+function ProductDetail({theme}) {
     const [cap, setCap] = useState({})
     const [loading, setLoading] = useState(true)
     const {id} = useParams();
@@ -34,3 +35,10 @@ export default function ProductDetail({theme}) {
         )
     }
 }
+
+const selector = state => {
+    return {theme: state.theme.currentTheme}
+}
+ 
+export default connect(selector, null)(ProductDetail)
+
