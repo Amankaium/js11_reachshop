@@ -8,35 +8,21 @@ import SignUp from './components/Users/SignUp';
 import SignIn from './components/Users/SignIn';
 import Orders from './components/Orders/Orders';
 import "./App.css";
-import {createStore} from 'redux';
-import themeReducer from "./shopredux/reducer";
+import {connect} from 'react-redux';
+import {changeCurrentTheme} from './shopredux/actions'
 
-let store = createStore(themeReducer)
 
-store.subscribe(() => {
-  console.log(store.getState())
-  // theme = store.getState().value
-})
-
-function App() {
+function App({currentTheme, changeCurrentTheme}) {
   const [phone, setPhone] = useState("2398745928476")
   const [token, setToken] = useState("")
-  const [theme, setTheme] = useState("light")
 
   function changeTheme() {
-    // const oldTheme = store.getState().value
-    // let newTheme = oldTheme === "light" ? "dark" : "light"
-    // if (theme === "dark") {
-    //   newTheme = "light"
-    // } else {
-    //   newTheme = "dark"
-    // }
-    store.dispatch({ type: store.getState().value })
+    changeCurrentTheme(currentTheme)
   }
 
   return (
     <Router>
-      <div className={theme}>
+      <div className={currentTheme}>
         <header>
           <nav>
             <Link to="/">Домой</Link> &nbsp;|&nbsp;&nbsp;
@@ -56,8 +42,8 @@ function App() {
           <Routes>
             <Route path="/about" element={<About/>}/>
             <Route path="/contacts" element={<Contacts phoneNumber={phone}/>}/>
-            <Route path="/" element={<Products theme={theme}/>}/>
-            <Route path="/products/:id/" element={<ProductDetail theme={theme}/>}/>
+            <Route path="/" element={<Products theme={currentTheme}/>}/>
+            <Route path="/products/:id/" element={<ProductDetail theme={currentTheme}/>}/>
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/signin" element={<SignIn setToken={setToken}/>}/>
             <Route path="/orders" element={<Orders token={token}/>}/>
@@ -68,4 +54,14 @@ function App() {
   );
 }
 
-export default App;
+// mapStateToProps
+function readState(state) { 
+  return {currentTheme: state.value}
+}
+
+// mapDispatchToProps
+const themeDispatcher = { 
+  changeCurrentTheme
+}
+
+export default connect(readState, themeDispatcher)(App);
