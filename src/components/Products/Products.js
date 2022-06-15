@@ -1,9 +1,10 @@
-import {useState, useEffect} from 'react'
-import Product from './Product'
-import "./Products.css"
+import {useState, useEffect} from 'react';
+import { connect } from 'react-redux';
+import Product from './Product';
+import "./Products.css";
 
 
-export default function Products({theme}) {
+function Products({theme}) {
     const [caps, setCaps] = useState([])
     const [isError, setError] = useState(false)
 
@@ -36,3 +37,9 @@ export default function Products({theme}) {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {theme: state.value}
+}
+
+export default connect(mapStateToProps, null)(Products)

@@ -9,7 +9,7 @@ import SignIn from './components/Users/SignIn';
 import Orders from './components/Orders/Orders';
 import "./App.css";
 import {connect} from 'react-redux';
-import {changeCurrentTheme} from './shopredux/actions'
+import {changeCurrentTheme} from './shopredux/actions';
 
 
 function App({currentTheme, changeCurrentTheme}) {
@@ -42,8 +42,8 @@ function App({currentTheme, changeCurrentTheme}) {
           <Routes>
             <Route path="/about" element={<About/>}/>
             <Route path="/contacts" element={<Contacts phoneNumber={phone}/>}/>
-            <Route path="/" element={<Products theme={currentTheme}/>}/>
-            <Route path="/products/:id/" element={<ProductDetail theme={currentTheme}/>}/>
+            <Route path="/" element={<Products/>}/>
+            <Route path="/products/:id/" element={<ProductDetail/>}/>
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/signin" element={<SignIn setToken={setToken}/>}/>
             <Route path="/orders" element={<Orders token={token}/>}/>
