@@ -9,15 +9,21 @@ import SignIn from './components/Users/SignIn';
 import Orders from './components/Orders/Orders';
 import "./App.css";
 import {connect} from 'react-redux';
-import {changeCurrentTheme} from './shopredux/actions';
+// import {changeCurrentTheme} from './shopredux/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeCurrentTheme } from './myToolkit/themeSlice';
 
 
-function App({currentTheme, changeCurrentTheme}) {
+function App() {
   const [phone, setPhone] = useState("2398745928476")
   const [token, setToken] = useState("")
 
+  const currentTheme = useSelector((state) => state.theme.currentTheme)
+  const dispatch = useDispatch()
+
   function changeTheme() {
-    changeCurrentTheme()
+    // console.log(currentTheme)
+    dispatch(changeCurrentTheme())
   }
 
   return (
@@ -54,14 +60,14 @@ function App({currentTheme, changeCurrentTheme}) {
   );
 }
 
-// mapStateToProps
-function readState(state) { 
-  return {currentTheme: state.theme.currentTheme}
-}
+// // mapStateToProps
+// function readState(state) { 
+//   return {currentTheme: state.theme.currentTheme}
+// }
 
-// mapDispatchToProps
-const themeDispatcher = { 
-  changeCurrentTheme
-}
+// // mapDispatchToProps
+// const themeDispatcher = { 
+//   changeCurrentTheme
+// }
 
-export default connect(readState, themeDispatcher)(App);
+export default App;

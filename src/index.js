@@ -4,14 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore, applyMiddleware} from 'redux';
-import themeReducer from "./shopredux/reducer";
 import {Provider} from 'react-redux';
 // import {myLogger} from './middleware/logger'
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
+import {store} from './myToolkit/index'
 
 
 // let store = createStore(themeReducer, applyMiddleware(myLogger))
-let store = createStore(themeReducer, applyMiddleware(thunk))
+// let store = createStore(themeReducer, applyMiddleware(thunk))
+
 
 // store.subscribe(() => {
 //   console.log(store.getState())
