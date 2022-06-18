@@ -3,17 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import themeReducer from "./shopredux/reducer";
 import {Provider} from 'react-redux';
+// import {myLogger} from './middleware/logger'
+import thunk from 'redux-thunk'
 
 
-let store = createStore(themeReducer)
+// let store = createStore(themeReducer, applyMiddleware(myLogger))
+let store = createStore(themeReducer, applyMiddleware(thunk))
 
-store.subscribe(() => {
-  console.log(store.getState())
-  // theme = store.getState().value
-})
+// store.subscribe(() => {
+//   console.log(store.getState())
+//   // theme = store.getState().value
+// })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

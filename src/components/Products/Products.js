@@ -12,7 +12,7 @@ function Products({theme}) {
         fetch(
             "http://159.89.2.247:8003/api/caps/")
         .then(response => {
-            console.log(response)
+            // console.log(response)
             return response.json()
         })
         .then(data => setCaps(data.results))
